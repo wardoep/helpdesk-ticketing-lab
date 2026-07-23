@@ -1,0 +1,12 @@
+# Secrets
+compose/.env
+.env
+
+# Local data
+data/
+*.sql
+backups/
+
+# Editor / OS
+.vscode/
+*~

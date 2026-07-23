@@ -1,0 +1,49 @@
+# osTicket + MariaDB.
+#   cp .env.example .env  &&  edit .env
+#   docker compose up -d
+# Then open http://<host>:8080 and run the web installer (see runbook 00).
+services:
+  db:
+    image: mariadb:10.11
+    container_name: osticket-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MYSQL_DATABASE}
+      MARIADB_USER: ${MYSQL_USER}
+      MARIADB_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - osticket_db:/var/lib/mysql
+    networks: [helpdesk]
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  osticket:
+    image: osticket/osticket:1.18.1
+    container_name: osticket-web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: ${TZ}
+    ports:
+      - "8080:80"
+    volumes:
+      - osticket_data:/var/www/html
+    networks: [helpdesk]
+
+volumes:
+  osticket_db:
+  osticket_data:
+
+networks:
+  helpdesk:
+    driver: bridge
