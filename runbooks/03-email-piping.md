@@ -15,7 +15,14 @@ osTicket supports **IMAP/POP fetching**: on a schedule it logs into the support 
    - **Mail fetching:** enable IMAP, enter host/port/SSL, username, password/app-password.
    - **New-ticket settings:** the department and help topic to assign fetched mail to, and whether to auto-respond.
 
-3. **Enable the cron/fetch schedule.** osTicket fetches on its cron. In the container, ensure the scheduler runs (the official image runs it; confirm with the *Dashboard → Information* "last cron" time advancing).
+3. **Enable the cron/fetch schedule.** osTicket fetches on its cron, but this lab's image runs only `apache2-foreground` and has no cron daemon of its own — so drive the cron one of two ways:
+   - **(a) Auto-cron** — *Admin Panel → Settings → System* → enable auto-cron, which runs the pending cron tasks (including mail fetch) whenever a staff member is active in the panel.
+   - **(b) Host cron** — schedule osTicket's cron from the host, e.g. a crontab entry every minute:
+     ```
+     * * * * * docker compose -f /path/to/compose/docker-compose.yml exec -T osticket php /var/www/html/api/cron.php
+     ```
+
+   Either way, confirm with the *Dashboard → Information* "last cron" time advancing.
 
 4. **Set the autoresponder** so a user emailing in immediately gets "Ticket #NNN received" with the number — that number is what threads their replies.
 
