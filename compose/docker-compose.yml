@@ -1,7 +1,13 @@
 # osTicket + MariaDB.
 #   cp .env.example .env  &&  edit .env
-#   docker compose up -d
+#   docker compose up -d --build
 # Then open http://<host>:8080 and run the web installer (see runbook 00).
+
+# Pin the project name. Without this, Compose derives it from the directory name
+# (here "compose"), so every lab whose file lives in a compose/ dir collides into
+# one shared "compose" project. Pinning keeps this stack isolated.
+name: helpdesk
+
 services:
   db:
     image: mariadb:10.11
@@ -22,7 +28,13 @@ services:
       retries: 10
 
   osticket:
-    image: osticket/osticket:1.18.1
+    # Built locally from ./image — the community images on Docker Hub are stuck on
+    # EOL PHP 7.2/7.3 (2020). Our image runs osTicket 1.18.4 on supported PHP 8.2.
+    build:
+      context: ../image
+      args:
+        OSTICKET_VERSION: "1.18.4"
+    image: helpdesk-osticket:1.18.4
     container_name: osticket-web
     restart: unless-stopped
     depends_on:
@@ -37,12 +49,16 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - osticket_data:/var/www/html
+      # Persist the webroot so the installer-written ost-config.php (and uploads)
+      # survive `down`/`up`. Docker seeds a fresh named volume from the image on
+      # first start. To upgrade osTicket, bump OSTICKET_VERSION AND remove this
+      # volume so the new code isn't shadowed by the old.
+      - osticket_web:/var/www/html
     networks: [helpdesk]
 
 volumes:
   osticket_db:
-  osticket_data:
+  osticket_web:
 
 networks:
   helpdesk:
