@@ -23,16 +23,14 @@ The runbooks are the *how*; **[TAKEAWAYS.md](TAKEAWAYS.md) is the *why*** — ho
 
 ## Milestones
 
-| # | Runbook | Status |
-|---|---------|--------|
-| 0 | [Deploy osTicket in Docker](runbooks/00-deploy-osticket.md) | ☐ |
-| 1 | [Departments, teams, and SLAs](runbooks/01-departments-teams-slas.md) | ☐ |
-| 2 | [Help topics and canned responses](runbooks/02-help-topics-and-canned.md) | ☐ |
-| 3 | [Email piping (email → ticket)](runbooks/03-email-piping.md) | ☐ |
-| 4 | [The agent workflow: life of a ticket](runbooks/04-agent-workflow.md) | ☐ |
-| 5 | [Sample tickets + knowledge base](runbooks/05-sample-tickets-and-kb.md) | ☐ |
-
-Statuses get checked off as each part is configured and verified.
+| # | Runbook |
+|---|---------|
+| 0 | [Deploy osTicket in Docker](runbooks/00-deploy-osticket.md) |
+| 1 | [Departments, teams, and SLAs](runbooks/01-departments-teams-slas.md) |
+| 2 | [Help topics and canned responses](runbooks/02-help-topics-and-canned.md) |
+| 3 | [Email piping (email → ticket)](runbooks/03-email-piping.md) |
+| 4 | [The agent workflow: life of a ticket](runbooks/04-agent-workflow.md) |
+| 5 | [Sample tickets + knowledge base](runbooks/05-sample-tickets-and-kb.md) |
 
 ## What's in this repo
 
