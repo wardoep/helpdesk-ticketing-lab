@@ -29,12 +29,3 @@
 
 - **A topic routes to the wrong department.** Check the topic's *Department* and *Priority* overrides — the topic wins over the department default.
 - **Canned variables show literally (`%{...}`).** Wrong variable name; use the picker in the canned-response editor.
-
-## What I learned
-
-*Filled in after I complete this milestone.*
-
-<!-- Prompts to answer once done:
-     - How much triage did help topics do for me automatically?
-     - Where did a canned response save real time, and where would it have been lazy to use one?
-     - What intake fields cut down the back-and-forth most? -->

@@ -30,12 +30,3 @@ The written-up versions live in [`tickets/`](../tickets/) and [`knowledge-base/`
 
 - **KB article won't show to users.** It's marked internal or its category is internal — set both to public.
 - **Can't link a ticket to a KB article.** Reference it in the resolution note / reply; osTicket links FAQs to help topics rather than directly to tickets.
-
-## What I learned
-
-*Filled in after I complete this milestone.*
-
-<!-- Prompts to answer once done:
-     - Which scenario taught me the most about diagnosis vs just following steps?
-     - Did writing the KB change how I'd resolve the ticket next time?
-     - What did the reporting dashboard reveal about where the desk's time goes? -->

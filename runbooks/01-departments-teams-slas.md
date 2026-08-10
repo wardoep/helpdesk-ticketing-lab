@@ -30,12 +30,3 @@
 
 - **Tickets show no due date.** No SLA is attached — either the department has no default SLA or the help topic (milestone 2) isn't setting one. Attach an SLA at the department or help-topic level.
 - **Everything lands in the default department.** Routing is set by help topics (next milestone) — until those exist, intake falls back to the default.
-
-## What I learned
-
-*Filled in after I complete this milestone.*
-
-<!-- Prompts to answer once done:
-     - What does an SLA actually commit the desk to, and what happens on breach in my config?
-     - Department vs team — when did I reach for each?
-     - How does priority feed into which SLA applies? -->

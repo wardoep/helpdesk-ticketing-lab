@@ -42,9 +42,5 @@ The runbooks are the *how*; **[TAKEAWAYS.md](TAKEAWAYS.md) is the *why*** — ho
 
 Ticketing-system administration (osTicket: departments, teams, agents, roles), SLA plans and priorities, ticket routing via help topics, canned responses and knowledge-base authoring, email-to-ticket piping over IMAP, the full ticket lifecycle (assign → work → internal notes vs replies → resolve → close), and the customer-service discipline of clear, reusable written resolutions — all deployed in Docker.
 
-## What I learned
-
-Filled in per milestone as the lab progresses — see the closing section of each runbook. The goal isn't a screenshot of a ticket tool; it's evidence I understand how a support desk is organised and can work a ticket from report to reusable knowledge.
-
 ---
 Built and maintained by **Edward J. Penna** — [github.com/wardoep](https://github.com/wardoep)
